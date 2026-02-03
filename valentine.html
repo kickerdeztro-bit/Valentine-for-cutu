@@ -105,6 +105,13 @@
         .love-text { font-size: 18px; }
         .love-page img { width: 180px; }
 }
+    .name-text{
+        font-size: 30px;
+        color: #df053b;
+        margin-top: 8px;
+        font-weight: bold;
+    }
+
 </style>
 </head>
 <body>
@@ -119,6 +126,7 @@
 <!-- Page 2 -->
 <div class="container hidden love-page" id="page2">
     <h1 class="glow">Yayyy Shonaa!! 🥰</h1>
+    <h2 id="nameText" class="name-text"></h2>
     <div class="love-text" id="loveMessage"></div>
     <img src="https://raw.githubusercontent.com/kickerdeztro-bit/Valentine-for-cutu/main/Kiss.gif" alt="Love Image">
 
@@ -133,6 +141,18 @@ const yesBtn = document.getElementById("yesBtn");
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
 const music = document.getElementById("bgMusic");
+
+
+const nameText = "Shaluu 💖";
+let nameIndex = 0;
+
+function typeName() {
+    if (nameIndex < nameText.length) {
+        document.getElementById("nameText").innerHTML += nameText.charAt(nameIndex);
+        nameIndex++;
+        setTimeout(typeName, 120);
+    }
+}
 
 // Move "No" button randomly
 function moveNoButton() {
@@ -149,7 +169,7 @@ noBtn.addEventListener("mouseover", moveNoButton);
 noBtn.addEventListener("touchstart", moveNoButton);
 
 // Typing effect text
-let text = "My Shaluu BABY🥺💖 \nYou are such a sweet blessing💞 \n My fav person you mean a lot to me ❣️ \n Ittaa saara pyaar for you ❤️❤️ \n HAPPY VALENTINE'S DAY 💘";
+let text = "My Pyalaa BABY🥺💖 \nYou are such a sweet blessing💞 \n My fav person you mean a lot to me ❣️ \n Ittaa saara pyaar for you BeBe❤️ \n HAPPY VALENTINE'S DAY 💘";
 let index = 0;
 
 function typeText() {
@@ -186,6 +206,7 @@ yesBtn.addEventListener("click", () => {
     page1.classList.add("hidden");
     page2.classList.remove("hidden");
 
+    typeName();
     typeText();
     music.play().catch(()=>{});
 
